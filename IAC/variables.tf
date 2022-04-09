@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "ecr_values" {
   type = any
   default = {
-    repository_name = "exanple_python_flask"
+    repository_name = "example_python_flask"
   }
   description = "AWS ECR configuration"
 }
