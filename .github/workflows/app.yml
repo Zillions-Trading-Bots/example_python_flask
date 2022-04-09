@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: psf/black@stable
-      
+   
   publish:
     name: Publish
     runs-on: ubuntu-latest
@@ -41,6 +41,16 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
+    - name: Tag Definition
+      id: gen_tag
+      run: |
+        if [[ $GITHUB_REF == 'refs/tags/'* ]]; then
+          TAG='${GITHUB_REF/refs\/tags\//}'
+        else
+          TAG='snapshot'
+        fi
+        echo '::set-output name=tag::'$TAG   
+        
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
@@ -55,7 +65,7 @@ jobs:
         # Build a docker container and push it to ECR 
         pwd
         cd APP
-        docker build -t ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ env.IMAGE_TAG }} .
+        docker build -t ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ steps.gen_tag.outputs.TAG }} .
         echo "Pushing image to ECR..."
-        docker push ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ env.IMAGE_TAG }}
-        echo "::set-output name=image::${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ env.IMAGE_TAG }}"
+        docker push ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ steps.gen_tag.outputs.TAG }}
+        echo "::set-output name=image::${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ steps.gen_tag.outputs.TAG }}"
