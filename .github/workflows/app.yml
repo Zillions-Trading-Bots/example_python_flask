@@ -7,10 +7,9 @@ on:
 
   
   push:
-    tags:
-      - '*'
     branches:
       - main
+      - 'refs/tags/*'
     paths:
       - 'APP/**'
       - '.github/workflows/app.yml'
