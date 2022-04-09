@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     branches:
       - main
+
   push:
     branches:
       - main
@@ -13,8 +14,9 @@ on:
       - '.github/workflows/app.yml'
 
   push:
-    branches:
-      - 'releases/**'      
+    # Pattern matched against refs/tags
+    tags:        
+      - '*'           # Push events to every tag not containing /   
 env:
   REPO_NAME: example_python_flask
   REGISTRY_URL: 016431746308.dkr.ecr.us-east-1.amazonaws.com
