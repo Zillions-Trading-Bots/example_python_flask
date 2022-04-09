@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+  create:
+    tags:
+      - *
   push:
     branches:
       - main
