@@ -9,4 +9,4 @@ COPY * ./
 
 EXPOSE 5000
 # Run application
-CMD python entry.py
+CMD python entry_flask.py
