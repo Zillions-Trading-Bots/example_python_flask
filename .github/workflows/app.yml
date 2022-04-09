@@ -5,10 +5,10 @@ on:
     branches:
       - main
 
-  create:
+  
+  push:
     tags:
       - *
-  push:
     branches:
       - main
     paths:

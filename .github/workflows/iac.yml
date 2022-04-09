@@ -1,7 +1,10 @@
 ﻿name: "Terraform"
 
 on:
+
   push:
+    tags:
+        - *
     branches:
       - main
     paths:
