@@ -5,15 +5,16 @@ on:
     branches:
       - main
   push:
-    tags:
-      - '*'
     branches:
       - main
-      - 'refs/tags/*'
+
     paths:
       - 'APP/**'
       - '.github/workflows/app.yml'
-      
+
+  push:
+    branches:
+      - 'releases/**'      
 env:
   REPO_NAME: example_python_flask
   REGISTRY_URL: 016431746308.dkr.ecr.us-east-1.amazonaws.com
