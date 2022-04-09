@@ -8,15 +8,15 @@ on:
   push:
     branches:
       - main
-
     paths:
       - 'APP/**'
       - '.github/workflows/app.yml'
 
-  push:
-    # Pattern matched against refs/tags
-    tags:        
-      - '*'           # Push events to every tag not containing /   
+  create:
+    branches:
+      - 'releases/**'
+
+  
 env:
   REPO_NAME: example_python_flask
   REGISTRY_URL: 016431746308.dkr.ecr.us-east-1.amazonaws.com
