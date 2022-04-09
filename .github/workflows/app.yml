@@ -65,7 +65,7 @@ jobs:
         # Build a docker container and push it to ECR 
         pwd
         cd APP
-        docker build -t ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ steps.gen_tag.outputs.TAG }} .
+        docker build -t ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:latest .
         echo "Pushing image to ECR..."
-        docker push ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ steps.gen_tag.outputs.TAG }}
-        echo "::set-output name=image::${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:${{ steps.gen_tag.outputs.TAG }}"
+        docker push ${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:latest
+        echo "::set-output name=image::${{ env.REGISTRY_URL }}/${{ env.REPO_NAME }}:latest"
