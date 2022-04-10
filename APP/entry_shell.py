@@ -11,16 +11,17 @@ service = my_example_service()
 if __name__ == "__main__":
     import sys
 
+    print("Starting server...")
     print(sys.argv)
 
     if len(sys.argv) > 1:
 
         service = my_example_service()
         if sys.argv[1] == "echo":
-            service.echo(sys.argv)
+            print(service.echo(sys.argv))
 
         elif sys.argv[1] == "inverso":
-            service.process("inverso", sys.argv[2])
+            print(service.process("inverso", sys.argv[2]))
 
         else:
-            print("Invalid command")
+            print("XXXXX Invalid command")
