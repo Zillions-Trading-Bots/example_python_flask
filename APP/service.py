@@ -1,6 +1,9 @@
 import json
 import logging
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 
 class my_example_service:
     def __init__(self):
