@@ -4,6 +4,10 @@ import logging
 from time import sleep
 from service import my_example_service
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+
 service = my_example_service()
 
 

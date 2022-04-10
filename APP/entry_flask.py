@@ -1,5 +1,6 @@
 """Main application file"""
 
+import logging
 from time import sleep
 from flask import Flask, redirect, url_for, request
 from service import my_example_service
@@ -7,11 +8,14 @@ from service import my_example_service
 flask_server = Flask(__name__)
 service = my_example_service()
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 
 @flask_server.route("/<random_string>", methods=["GET", "POST"])
 def random_path(random_string):
 
-    print(random_string)
+    logging.info(f"Route <random_string>  with random_string:{random_string}")
     load = None
 
     method = request.method
@@ -43,6 +47,7 @@ def random_path(random_string):
 @flask_server.route("/inversor", methods=["GET"])
 def process():
 
+    logging.info(f"Route /inversor")
     # if key doesn't exist, returns None
     arg1 = request.args.get("palavra", "None")
 
@@ -51,13 +56,16 @@ def process():
 
 @flask_server.route("/", methods=["GET"])
 def root():
+    logging.info(f"Route /")
     return "Root! Up and Running!"
 
 
 @flask_server.route("/health", methods=["GET"])
 def health():
+    logging.info(f"Route /health")
     return "Health and Running!"
 
 
 if __name__ == "__main__":
+    logging.info(f"Starting server entry_flask.py:__main__")
     flask_server.run(host="0.0.0.0", port=5000)
