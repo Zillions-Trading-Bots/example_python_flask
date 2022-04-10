@@ -1,15 +1,16 @@
 """Main application file"""
 
 import logging
+import sys
 from time import sleep
 from flask import Flask, redirect, url_for, request
 from service import my_example_service
+import sys
 
 flask_server = Flask(__name__)
 service = my_example_service()
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
 @flask_server.route("/<random_string>", methods=["GET", "POST"])
