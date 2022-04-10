@@ -7,8 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install application
 COPY * ./
 
-#RUN echo "asdadasdad"
-#RUN ls -la
+
 EXPOSE 5000
 # Run application
 CMD python entry_flask.py
