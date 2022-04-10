@@ -44,7 +44,7 @@ def random_path(random_string):
     )
 
 
-@flask_server.route("/inversor", methods=["GET"])
+@flask_server.route("/inverso", methods=["GET"])
 def process():
 
     logging.info(f"Route /inversor")
