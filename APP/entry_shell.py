@@ -5,7 +5,7 @@ from time import sleep
 from service import my_example_service
 import sys
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+# logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 service = my_example_service()
 
 
