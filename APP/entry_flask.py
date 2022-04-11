@@ -10,7 +10,8 @@ import sys
 flask_server = Flask(__name__)
 service = my_example_service()
 
-# logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 @flask_server.route("/<random_string>", methods=["GET", "POST"])

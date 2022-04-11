@@ -2,7 +2,8 @@ import json
 import logging
 import sys
 
-# logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class my_example_service:
