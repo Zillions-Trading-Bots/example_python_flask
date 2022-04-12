@@ -17,7 +17,8 @@ if __name__ == "__main__":
 
         service = my_example_service()
         if sys.argv[1] == "echo":
-            logging.info(service.echo(sys.argv))
+            args_dict = {f"arg_{i}": sys.argv[i] for i in range(0, len(sys.argv))}
+            logging.info(service.echo(**args_dict))
 
         elif sys.argv[1] == "inverso":
             logging.info(service.process("inverso", sys.argv[2]))
