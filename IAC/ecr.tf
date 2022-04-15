@@ -1,30 +1,7 @@
-resource "aws_ecr_repository" "repository" {
-  name                 = local.ecr["repository_name"]
-  image_tag_mutability = "MUTABLE"
-}
+module "ecr_fargate" {
+  source = "git::https://github.com/Zillions-Trading-Bots/example_python_flask.git//modules/ecr"
 
-resource "aws_ecr_repository_policy" "policy" {
-  repository = aws_ecr_repository.repository.name
-  policy     = <<EOF
-  {
-    "Version": "2008-10-17",
-    "Statement": [
-      {
-        "Sid": "adds full ecr access to the ${local.ecr["repository_name"]} repository",
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": [
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:BatchGetImage",
-          "ecr:CompleteLayerUpload",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:GetLifecyclePolicy",
-          "ecr:InitiateLayerUpload",
-          "ecr:PutImage",
-          "ecr:UploadLayerPart"
-        ]
-      }
-    ]
-  }
-  EOF
+  aws_region = var.aws_region
+  ecr_values = var.ecr_values
+  tags       = var.tags
 }
