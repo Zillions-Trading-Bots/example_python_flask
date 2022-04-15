@@ -3,4 +3,7 @@ module "ecr_fargate" {
 
   aws_region = var.aws_region
   ecr_values = var.ecr_values
+
 }
+
+
