@@ -17,3 +17,4 @@ variable "vpc" {
   default     = {}
   description = "AWS VPC configuration"
 }
+
